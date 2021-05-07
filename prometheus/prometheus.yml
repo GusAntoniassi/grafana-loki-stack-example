@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 5s
+
+rule_files: []
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'app_controller'
+    static_configs:
+      - targets: ['controller:80']
+
+  - job_name: 'app_seconds'
+    static_configs:
+      - targets: ['seconds:80']
+
+  - job_name: 'app_minutes'
+    static_configs:
+      - targets: ['minutes:80']
+
+  - job_name: 'app_hours'
+    static_configs:
+      - targets: ['hours:80']
+  

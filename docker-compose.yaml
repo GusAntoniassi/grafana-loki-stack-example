@@ -1,0 +1,113 @@
+version: "3.8"
+   
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+
+services:
+  controller:
+    build: 
+      context: ./controller
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./controller:/app
+    ports:
+      - 8080:80
+    depends_on:
+      - loki
+    environment:
+      - PORT=80
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
+
+  seconds:
+    build: 
+      context: ./seconds
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./seconds:/app
+    environment:
+      - PORT=80
+    depends_on:
+      - loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
+  
+  minutes:
+    build: 
+      context: ./minutes
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./minutes:/app
+    environment:
+      - PORT=80
+    depends_on:
+      - loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
+  
+  hours:
+    build: 
+      context: ./hours
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./hours:/app
+    environment:
+      - PORT=80
+    depends_on:
+      - loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
+  
+  prometheus:
+    image: prom/prometheus:v2.25.2
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - 9090:9090
+    depends_on:
+      - controller
+      - seconds
+      - hours
+      - minutes
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
+  
+  grafana:
+    image: grafana/grafana:7.5.4
+    user: "472"
+    depends_on:
+      - prometheus
+      - loki
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    env_file:
+      - ./grafana/config.env
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"  
+  
+  loki:
+    image: grafana/loki:2.0.0
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml

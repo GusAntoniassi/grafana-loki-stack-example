@@ -1,0 +1,1596 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "iteration": 1619270463515,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 26,
+      "interval": "1m",
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (job, status) (rate(http_request_duration_seconds_count[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ job }} - {{ status }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Requisições por segundo",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 27,
+      "interval": "1m",
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (job, status) (rate(http_request_duration_seconds_sum[$__interval])) / sum by (job, status) (rate(http_request_duration_seconds_count[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ job }} - {{ status }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Tempo de resposta",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 4,
+      "panels": [],
+      "repeat": "applications",
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "controller",
+          "value": "controller"
+        }
+      },
+      "title": "$applications",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "interval": "1m",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "controller",
+          "value": "controller"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Requisições por segundo",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "reqps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 16,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "controller",
+          "value": "controller"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (job, status) (rate(http_request_duration_seconds_sum{job=\"app_$applications\"}[$__interval])) / sum by (job, status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Tempo médio de resposta",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "n/a",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 38,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "controller",
+          "value": "controller"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.01\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "interval": "",
+          "legendFormat": "<= 10ms ({{ status }})",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.05\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 50ms ({{ status }})",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.1\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 100ms ({{ status }})",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.5\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 500ms ({{ status }})",
+          "refId": "D"
+        }
+      ],
+      "title": "% reqs servidas em",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 39,
+      "panels": [],
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 4,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "seconds",
+          "value": "seconds"
+        }
+      },
+      "title": "$applications",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 33
+      },
+      "hiddenSeries": false,
+      "id": 40,
+      "interval": "1m",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 9,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "seconds",
+          "value": "seconds"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Requisições por segundo",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "reqps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 33
+      },
+      "hiddenSeries": false,
+      "id": 41,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 16,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "seconds",
+          "value": "seconds"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (job, status) (rate(http_request_duration_seconds_sum{job=\"app_$applications\"}[$__interval])) / sum by (job, status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Tempo médio de resposta",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "n/a",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
+      "id": 42,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "seconds",
+          "value": "seconds"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.01\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "interval": "",
+          "legendFormat": "<= 10ms ({{ status }})",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.05\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 50ms ({{ status }})",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.1\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 100ms ({{ status }})",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.5\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 500ms ({{ status }})",
+          "refId": "D"
+        }
+      ],
+      "title": "% reqs servidas em",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 43,
+      "panels": [],
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 4,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "hours",
+          "value": "hours"
+        }
+      },
+      "title": "$applications",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "hiddenSeries": false,
+      "id": 44,
+      "interval": "1m",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 9,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "hours",
+          "value": "hours"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Requisições por segundo",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "reqps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "hiddenSeries": false,
+      "id": 45,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 16,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "hours",
+          "value": "hours"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (job, status) (rate(http_request_duration_seconds_sum{job=\"app_$applications\"}[$__interval])) / sum by (job, status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Tempo médio de resposta",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "n/a",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 46,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "hours",
+          "value": "hours"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.01\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "interval": "",
+          "legendFormat": "<= 10ms ({{ status }})",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.05\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 50ms ({{ status }})",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.1\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 100ms ({{ status }})",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.5\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 500ms ({{ status }})",
+          "refId": "D"
+        }
+      ],
+      "title": "% reqs servidas em",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 60
+      },
+      "id": 47,
+      "panels": [],
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 4,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "minutes",
+          "value": "minutes"
+        }
+      },
+      "title": "$applications",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 61
+      },
+      "hiddenSeries": false,
+      "id": 48,
+      "interval": "1m",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 9,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "minutes",
+          "value": "minutes"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Requisições por segundo",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "reqps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 61
+      },
+      "hiddenSeries": false,
+      "id": 49,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 16,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "minutes",
+          "value": "minutes"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (job, status) (rate(http_request_duration_seconds_sum{job=\"app_$applications\"}[$__interval])) / sum by (job, status) (rate(http_request_duration_seconds_count{job=\"app_$applications\"}[$__interval]))",
+          "interval": "",
+          "legendFormat": "{{ status }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Tempo médio de resposta",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:107",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:108",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "n/a",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 69
+      },
+      "id": 50,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "repeatIteration": 1619270463515,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "applications": {
+          "selected": false,
+          "text": "minutes",
+          "value": "minutes"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.01\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "interval": "",
+          "legendFormat": "<= 10ms ({{ status }})",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.05\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 50ms ({{ status }})",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.1\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 100ms ({{ status }})",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"0.5\"}[1m])) / sum by (status) (rate(http_request_duration_seconds_bucket{job=\"app_$applications\", le=\"+Inf\"}[1m])) ",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "<= 500ms ({{ status }})",
+          "refId": "D"
+        }
+      ],
+      "title": "% reqs servidas em",
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "Quais aplicações deverão ser exibidas?",
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "applications",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "controller",
+            "value": "controller"
+          },
+          {
+            "selected": false,
+            "text": "seconds",
+            "value": "seconds"
+          },
+          {
+            "selected": false,
+            "text": "hours",
+            "value": "hours"
+          },
+          {
+            "selected": false,
+            "text": "minutes",
+            "value": "minutes"
+          }
+        ],
+        "query": "controller, seconds, hours, minutes",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Application Monitoring",
+  "uid": "3JFsEGrMk",
+  "version": 4
+}
